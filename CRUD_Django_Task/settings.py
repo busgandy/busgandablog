@@ -15,24 +15,32 @@ import os
 import environ
 import django_heroku
 import whitenoise
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()
-environ.Env.read_env()
+# env = environ.Env()
+# environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-sw(j)c$gt99yxf7^313o#gg8bpbx*jh&dwbhkbfg6_ro42e=lo'
+#SECRET_KEY = 'django-insecure-sw(j)c$gt99yxf7^313o#gg8bpbx*jh&dwbhkbfg6_ro42e=lo'
+#SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.getenv("SECRET_KEY", default= 'django-insecure-sw(j)c$gt99yxf7^313o#gg8bpbx*jh&dwbhkbfg6_ro42e=lo')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['busgandablog.herokuapp.com', 'localhost', '127.0.0.1']
+
+#ALLOWED_HOSTS = []
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
@@ -77,6 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.core.context_processors.request",
             ],
         },
     },
@@ -140,4 +149,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = "/base1"
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

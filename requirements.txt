@@ -4,9 +4,11 @@ Django==3.2
 django-crispy-forms==1.11.2
 django-environ==0.4.5
 django-heroku==0.3.1
+environ==1.0
 gunicorn==20.1.0
 psycopg2==2.8.6
-pytz==2021.1
-sqlparse==0.4.1
-whitenoise==5.2.0
 PyMySQL==1.0.2
+python-dotenv==0.17.0
+pytz==2021.1
+-e git+https://github.com/andialbrecht/sqlparse@23d29933ddc4272b495d36e0e32d3eaf0c3ef76d#egg=sqlparse
+whitenoise==5.2.0
